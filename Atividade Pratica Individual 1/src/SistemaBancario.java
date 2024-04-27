@@ -25,6 +25,9 @@ public class SistemaBancario {
             clientes[i].start();
         }
 
+        String nomeBanco = "BRB";
+        Banco banco = new Banco(nomeBanco);
+
         while (true) {
             System.out.println("Escolha uma opção:");
             System.out.println("1. Continuar no sistema");

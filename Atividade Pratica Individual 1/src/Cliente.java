@@ -1,7 +1,7 @@
 public class Cliente implements Runnable {
     private final Conta conta;
     private final Loja[] lojas;
-    private final double[] compras = { 10, 15, 50, 80, 100, 150, 200 };
+    private final double[] compras = { 100, 200 };
     private int compraIndex = 0;
 
     public Cliente(Conta conta, Loja[] lojas) {
