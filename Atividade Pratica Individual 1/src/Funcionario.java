@@ -26,7 +26,7 @@ public class Funcionario implements Runnable {
         }
     }
 
-    public void iniciar() {
+    public void start() {
         new Thread(this).start();
     }
 }
