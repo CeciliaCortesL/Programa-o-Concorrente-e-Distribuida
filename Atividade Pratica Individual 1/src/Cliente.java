@@ -25,7 +25,7 @@ public class Cliente implements Runnable {
                 compraIndex = (compraIndex + 1) % compras.length;
             }
             try {
-                Thread.sleep(10000); // Simula a compra a cada 10 segundos
+                Thread.sleep(5000); // Simula a compra a cada 5 segundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

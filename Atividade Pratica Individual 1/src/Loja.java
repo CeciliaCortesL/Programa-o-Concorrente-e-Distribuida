@@ -10,6 +10,7 @@ public class Loja {
         if (conta.getSaldo() >= salarioFuncionario) {
             conta.debitar(salarioFuncionario);
             System.out.println("Funcionário pago: R$ " + salarioFuncionario);
+            System.out.println("Saldo atual da conta da loja: R$ " + conta.getSaldo());
         } else {
             System.out.println("Saldo insuficiente para pagar o funcionário!");
         }
