@@ -1,38 +1,39 @@
-public class Cliente implements Runnable {
-    private final Conta conta;
-    private final Loja[] lojas;
-    private final double[] compras = { 100, 200 };
-    private int compraIndex = 0;
+import java.util.Random;
 
-    public Cliente(Conta conta, Loja[] lojas) {
-        this.conta = conta;
+public class Cliente extends Thread {
+
+    private final String nomeCliente;
+    private final Conta contaCliente;
+    private final Loja[] lojas;
+    private final Banco banco;
+    private final Random random = new Random();
+
+    public Cliente(String nomeCliente, Conta conta, Loja[] lojas, Banco banco) {
+        this.nomeCliente = nomeCliente;
+        this.contaCliente = conta;
         this.lojas = lojas;
+        this.banco = banco;
     }
 
     @Override
     public void run() {
-        while (true) {
-            double valorCompra = compras[compraIndex];
-            Loja loja = lojas[compraIndex % lojas.length];
+        while (contaCliente.getSaldo() > 0) {
+            Loja loja = lojas[(int) (Math.random() * lojas.length)];
+            double valorDaCompra = Math.random() < 0.5 ? 100 : 200;
+
             synchronized (loja) {
-                if (conta.getSaldo() >= valorCompra) {
-                    conta.debitar(valorCompra);
-                    loja.receberPagamento(valorCompra);
-                    System.out.println("Cliente comprou R$ " + valorCompra + " na loja" + loja);
+                if (contaCliente.getSaldo()>= valorDaCompra) {
+                    banco.transferir(contaCliente, loja.getContaLoja(), valorDaCompra);
+                    System.out.println("Cliente: " + nomeCliente + " Compra: R$ " + valorDaCompra + " Loja: " + loja);
                 } else {
-                    System.out.println("Cliente com saldo insuficiente para comprar R$ " + valorCompra + " na loja" + loja);
+                    break;
                 }
-                compraIndex = (compraIndex + 1) % compras.length;
             }
             try {
-                Thread.sleep(5000); // Simula a compra a cada 5 segundos
+                Thread.sleep(random.nextInt(2000)); // Simula a compra a cada 2 segundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void start() {
-        new Thread(this).start();
     }
 }

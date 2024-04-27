@@ -1,22 +1,32 @@
 public class Loja {
-    private final Conta conta;
-    private final double salarioFuncionario = 1400;
+    private final String nomeLoja;
+    private final Conta contaLoja;
+    private final Funcionario[] funcionarios;
 
-    public Loja(double saldoInicial) {
-        this.conta = new Conta(saldoInicial);
+
+    public Loja(String nomeLoja, Conta contaLoja, Funcionario[] funcionarios) {
+        this.nomeLoja = nomeLoja;
+        this.contaLoja = contaLoja;
+        this.funcionarios = funcionarios;
     }
 
-    public void pagarFuncionario() {
-        if (conta.getSaldo() >= salarioFuncionario) {
-            conta.debitar(salarioFuncionario);
-            System.out.println("Pagamento de Funcionário: R$ " + salarioFuncionario);
-            System.out.println("Saldo atual da conta da loja: R$ " + conta.getSaldo());
-        } else {
-            System.out.println("Saldo de R$ " + conta.getSaldo() + " insuficiente para pagar o funcionário!");
+    public String getNomeLoja() {
+        return nomeLoja;
+    }
+
+    public Conta getContaLoja() {
+        return contaLoja;
+    }
+
+    public void pagarFuncionarios() {
+        System.out.println("Pagamento dos funcionários da loja: " + nomeLoja);
+        synchronized(contaLoja){
+            for (Funcionario funcionario : funcionarios) {
+                if (contaLoja.getSaldo() >= Funcionario.getSalario()) {
+                    contaLoja.depositar(Funcionario.getSalario());
+                    System.out.println("Funcionário: " + funcionario.getNome() + " Loja: " + nomeLoja + " Salário recebido: R$ " + Funcionario.getSalario());
+                }
+            }
         }
     }
-
-    public void receberPagamento(double valor) {
-        conta.creditar(valor);
-    }    
 }

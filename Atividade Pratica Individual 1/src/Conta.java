@@ -1,37 +1,25 @@
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class Conta {
-    private double saldo;
-    private final Lock lock = new ReentrantLock();
+    private String tipoConta;
+    private int saldo;
 
-    public Conta(double saldo) {
-        this.saldo = saldo;
+    public Conta(String tipoConta, int saldoInicial) {
+        this.tipoConta = tipoConta;
+        this.saldo = saldoInicial;
     }
 
-    public double getSaldo() {
+    public synchronized void depositar(double valor) {
+        saldo+=valor;
+    }
+
+    public synchronized void sacar(double valor) {
+        saldo-=valor;
+    }
+
+    public String getNomeConta() {
+        return tipoConta;
+    }
+
+    public int getSaldo() {
         return saldo;
-    }
-
-    public void debitar(double valor) {
-        lock.lock();
-        try {
-            saldo -= valor;
-            System.out.println("Valor debitado da conta: R$ " + valor);
-            System.out.println("Saldo atual da conta: R$ " + saldo);
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public void creditar(double valor) {
-        lock.lock();
-        try {
-            saldo += valor;
-            System.out.println("Valor creditado da conta: R$ " + valor);
-            System.out.println("Saldo atual da conta: R$ " + saldo);
-        } finally {
-            lock.unlock();
-        }
     }
 }
