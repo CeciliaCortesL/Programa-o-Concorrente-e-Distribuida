@@ -1,6 +1,6 @@
-public class Cliente {
+public class Cliente implements Runnable {
     private final Conta conta;
-    private final Loja[] lojas = new Loja[2];
+    private final Loja[] lojas;
     private final double[] compras = { 100, 200 };
     private int compraIndex = 0;
 
@@ -25,10 +25,14 @@ public class Cliente {
                 compraIndex = (compraIndex + 1) % compras.length;
             }
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2000); // Simula o intervalo entre as compras
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    }    
+    }
+
+    public void start() {
+        new Thread(this).start();
+    }
 }
