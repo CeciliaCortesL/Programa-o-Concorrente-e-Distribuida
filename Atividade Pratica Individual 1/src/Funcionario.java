@@ -18,6 +18,7 @@ public class Funcionario implements Runnable {
             double valorInvestimento = salario * 0.2;
             salarioConta.debitar(valorInvestimento);
             investimentoConta.creditar(valorInvestimento);
+            System.out.println("Funcionário recebeu salário e realizou investimento.");
             try {
                 Thread.sleep(10000); // Simula o pagamento a cada 10 segundos
             } catch (InterruptedException e) {
