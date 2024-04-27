@@ -1,4 +1,4 @@
-public class Funcionario {
+public class Funcionario implements Runnable {
     private final Loja loja;
     private final Conta salarioConta;
     private final Conta investimentoConta;
@@ -19,10 +19,15 @@ public class Funcionario {
             salarioConta.debitar(valorInvestimento);
             investimentoConta.creditar(valorInvestimento);
             try {
-                Thread.sleep(1000); // Simula o pagamento a cada segundo
+                Thread.sleep(10000); // Simula o pagamento a cada 10 segundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    }    
+    }
+
+    public void iniciar() {
+        new Thread(this).start();
+    }
 }
+
