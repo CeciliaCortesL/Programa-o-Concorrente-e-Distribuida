@@ -21,9 +21,9 @@ public class Banco {
     }
 
     public void exibirSaldosFinais(Conta[] contas){
-        System.out.println("O saldo das contas: ");
+        System.out.println("Saldo das contas: ");
         for (Conta conta : contas) {
-            System.out.println("Conta: " + conta.getNomeConta() + " Saldo: " + conta.getSaldo());
+            System.out.println("Conta: " + conta.getNomeConta() + " Saldo R$: " + conta.getSaldo());
         }
     }
 }
