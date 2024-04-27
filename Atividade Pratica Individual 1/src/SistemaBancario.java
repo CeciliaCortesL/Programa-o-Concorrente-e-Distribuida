@@ -1,4 +1,7 @@
+import java.util.Scanner;
+
 public class SistemaBancario {
+    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         Conta[] contasClientes = new Conta[5];
         for (int i = 0; i < contasClientes.length; i++) {
@@ -20,6 +23,19 @@ public class SistemaBancario {
         for (int i = 0; i < clientes.length; i++) {
             clientes[i] = new Cliente(contasClientes[i], lojas);
             clientes[i].start();
+        }
+
+        while (true) {
+            System.out.println("Escolha uma opção:");
+            System.out.println("1. Continuar no sistema");
+            System.out.println("2. Sair do sistema");
+            int escolha = scanner.nextInt();
+            if (escolha == 2) {
+                System.out.println("Saindo do sistema...");
+                break;
+            } else {
+                System.out.println("Continuando no sistema...");
+            }
         }
     }   
 }
