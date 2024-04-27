@@ -17,6 +17,7 @@ public class Conta {
         lock.lock();
         try {
             saldo -= valor;
+            System.out.println("Valor debitado da conta: R$ " + valor);
             System.out.println("Saldo atual da conta: R$ " + saldo);
         } finally {
             lock.unlock();
@@ -27,6 +28,7 @@ public class Conta {
         lock.lock();
         try {
             saldo += valor;
+            System.out.println("Valor creditado da conta: R$ " + valor);
             System.out.println("Saldo atual da conta: R$ " + saldo);
         } finally {
             lock.unlock();

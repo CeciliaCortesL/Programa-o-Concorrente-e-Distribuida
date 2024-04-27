@@ -1,7 +1,7 @@
 public class Cliente implements Runnable {
     private final Conta conta;
     private final Loja[] lojas;
-    private final double[] compras = { 100, 200 };
+    private final double[] compras = { 10, 15, 50, 80, 100, 150, 200 };
     private int compraIndex = 0;
 
     public Cliente(Conta conta, Loja[] lojas) {
@@ -18,9 +18,9 @@ public class Cliente implements Runnable {
                 if (conta.getSaldo() >= valorCompra) {
                     conta.debitar(valorCompra);
                     loja.receberPagamento(valorCompra);
-                    System.out.println("Cliente comprou na loja " + loja);
+                    System.out.println("Cliente comprou R$ " + valorCompra + " na loja" + loja);
                 } else {
-                    System.out.println("Cliente sem saldo para comprar na loja " + loja);
+                    System.out.println("Cliente com saldo insuficiente para comprar R$ " + valorCompra + " na loja" + loja);
                 }
                 compraIndex = (compraIndex + 1) % compras.length;
             }
