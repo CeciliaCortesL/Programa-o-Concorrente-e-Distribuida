@@ -1,6 +1,3 @@
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class Loja {
     private final Conta conta;
     private final double salarioFuncionario = 1400;
