@@ -1,3 +1,3 @@
-public class funcionario {
+public class Funcionario {
 
 }
