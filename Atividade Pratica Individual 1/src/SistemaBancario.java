@@ -2,38 +2,38 @@ public class SistemaBancario {
     public static void main(String[] args) throws Exception {
         Banco banco = new Banco();
 
-        Conta contaL1 = new Conta("Conta Corrente", 0);
-        Conta contaL2 = new Conta("Poupança", 0);
+        Conta contaLoja1 = new Conta("Conta Corrente", 0);
+        Conta contaLoja2 = new Conta("Poupança", 0);
 
-        Funcionario funcionario1L1 = new Funcionario("Ana Luisa", contaL1, null);
-        Funcionario funcionario2L1 = new Funcionario("Pedro Curi", contaL1, null);
-        Funcionario funcionario1L2 = new Funcionario("Luiz Felipe", contaL2, null);
-        Funcionario funcionario2L2 = new Funcionario("Gabriela Ferreira", contaL2, null);
+        Conta contaFuncionario1 = new Conta("Ana Luisa", 0);
+        Conta contaFuncionario2 = new Conta("Pedro Curi", 0);
+        Conta contaFuncionario3 = new Conta("Luiz Felipe", 0);
+        Conta contaFuncionario4 = new Conta("Gabriela Ferreira", 0);
 
-        Loja L1 = new Loja("Renner", contaL1, new Funcionario[]{funcionario1L1, funcionario1L2});
-        Loja L2 = new Loja("Shopee", contaL2, new Funcionario[]{funcionario2L1, funcionario2L2});
+        Conta contaInicial1 = new Conta("Ana Luisa: Conta Corrente", 0);
+        Conta contaInicial2 = new Conta("Pedro Curi: Conta Corrente", 0);
+        Conta contaInicial3 = new Conta("Luiz Felipe: Poupança", 0);
+        Conta contaInicial4 = new Conta("Gabriela Ferreira: Poupança", 0);
 
-        Conta contaF1 = new Conta("Ana Luisa: BRB", 0);
-        Conta contaF2 = new Conta("Pedro Curi: BB", 0);
-        Conta contaF3 = new Conta("Luiz Felipe: Itaú", 0);
-        Conta contaF4 = new Conta("Gabriela Ferreira: Santander", 0);
+        Conta contaCliente1 = new Conta("Gabriela Santos", 1000);
+        Conta contaCliente2 = new Conta("João da Cunha", 1000);
+        Conta contaCliente3 = new Conta("Isabela Coelho", 1000);
+        Conta contaCliente4 = new Conta("Paulo Amaral", 1000);
+        Conta contaCliente5 = new Conta("Rodrigo Cabral", 1000);
 
-        Conta contaI1 = new Conta("Ana Luisa: Conta Corrente", 0);
-        Conta contaI2 = new Conta("Pedro Curi: Conta Corrente", 0);
-        Conta contaI3 = new Conta("Luiz Felipe: Poupança", 0);
-        Conta contaI4 = new Conta("Gabriela Ferreira: Poupança", 0);
+        Funcionario funcionario1Loja1 = new Funcionario("Ana Luisa", contaLoja1, null);
+        Funcionario funcionario2Loja1 = new Funcionario("Pedro Curi", contaLoja1, null);
+        Funcionario funcionario1Loja2 = new Funcionario("Luiz Felipe", contaLoja2, null);
+        Funcionario funcionario2Loja2 = new Funcionario("Gabriela Ferreira", contaLoja2, null);
 
-        Conta contaC1 = new Conta("Gabriela Santos: Banco do Brasil", 1000);
-        Conta contaC2 = new Conta("João da Cunha: Bradesco", 1000);
-        Conta contaC3 = new Conta("Isabela Coelho: Bradesco", 1000);
-        Conta contaC4 = new Conta("Paulo Amaral: Itaú", 1000);
-        Conta contaC5 = new Conta("Rodrigo Cabral: BRB", 1000);
+        Loja Loja1 = new Loja("Renner", contaLoja1, new Funcionario[]{funcionario1Loja1, funcionario1Loja2});
+        Loja Loja2 = new Loja("Shopee", contaLoja2, new Funcionario[]{funcionario2Loja1, funcionario2Loja2});
 
-        Cliente cliente1 = new Cliente("Gebriela Santos", contaC1, new Loja[]{L1, L2}, banco);
-        Cliente cliente2 = new Cliente("João da Cunha", contaC2, new Loja[]{L1, L2}, banco);
-        Cliente cliente3 = new Cliente("Isabela Coelho", contaC3, new Loja[]{L1, L2}, banco);
-        Cliente cliente4 = new Cliente("Paulo Amaral", contaC4, new Loja[]{L1, L2}, banco);
-        Cliente cliente5 = new Cliente("Rodrigo Cabral", contaC5, new Loja[]{L1, L2}, banco);
+        Cliente cliente1 = new Cliente("Gebriela Santos", contaCliente1, new Loja[]{Loja1, Loja2}, banco);
+        Cliente cliente2 = new Cliente("João da Cunha", contaCliente2, new Loja[]{Loja1, Loja2}, banco);
+        Cliente cliente3 = new Cliente("Isabela Coelho", contaCliente3, new Loja[]{Loja1, Loja2}, banco);
+        Cliente cliente4 = new Cliente("Paulo Amaral", contaCliente4, new Loja[]{Loja1, Loja2}, banco);
+        Cliente cliente5 = new Cliente("Rodrigo Cabral", contaCliente5, new Loja[]{Loja1, Loja2}, banco);
 
         cliente1.start();
         cliente2.start();
@@ -51,11 +51,10 @@ public class SistemaBancario {
             e.printStackTrace();
         }
 
-        L1.pagarFuncionarios();
-        L2.pagarFuncionarios();
+        Loja1.pagarFuncionarios();
+        Loja2.pagarFuncionarios();
 
-
-        Conta[] contas = {contaC1, contaC2, contaC3, contaC4, contaC5, contaF1, contaF2, contaF3, contaF4, contaI1, contaI2, contaI3, contaI4, contaL1, contaL2};
-        banco.exibirSaldosFinais(contas);
+        Conta[] contas = {contaCliente1, contaCliente2, contaCliente3, contaCliente4, contaCliente5, contaFuncionario1, contaFuncionario2, contaFuncionario3, contaFuncionario4, contaInicial1, contaInicial2, contaInicial3, contaInicial4, contaLoja1, contaLoja2};
+        banco.exibirSaldos(contas);
     }
 }

@@ -19,8 +19,9 @@ public class Loja {
     }
 
     public void pagarFuncionarios() {
-        System.out.println("----------------------------------------------------------------------");
-        System.out.println("Pagamento dos funcionários da loja: " + nomeLoja);
+        System.out.println("==========================================================================");
+        System.out.println("===               Pagamento dos funcionários da loja: " + nomeLoja + "           ===");
+        System.out.println("==========================================================================");
         synchronized(contaLoja){
             for (Funcionario funcionario : funcionarios) {
                 if (contaLoja.getSaldo() >= Funcionario.getSalario()) {

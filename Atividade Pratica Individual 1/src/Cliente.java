@@ -19,18 +19,18 @@ public class Cliente extends Thread {
     public void run() {
         while (contaCliente.getSaldo() > 0) {
             Loja loja = lojas[(int) (Math.random() * lojas.length)];
-            double valorDaCompra = Math.random() < 0.5 ? 100 : 200;
+            double valorCompra = Math.random() < 0.5 ? 100 : 200;
 
             synchronized (loja) {
-                if (contaCliente.getSaldo()>= valorDaCompra) {
-                    banco.transferir(contaCliente, loja.getContaLoja(), valorDaCompra);
-                    System.out.println("Cliente: " + nomeCliente + " - Loja: " + loja.getNomeLoja() + " - Compra: R$ " + valorDaCompra);
+                if (contaCliente.getSaldo()>= valorCompra) {
+                    banco.transferir(contaCliente, loja.getContaLoja(), valorCompra);
+                    System.out.println("Cliente: " + nomeCliente + " - Loja: " + loja.getNomeLoja() + " - Compra: R$ " + valorCompra);
                 } else {
                     break;
                 }
             }
             try {
-                Thread.sleep(random.nextInt(2000)); // Simula a compra a cada 2 segundos
+                Thread.sleep(random.nextInt(2000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
