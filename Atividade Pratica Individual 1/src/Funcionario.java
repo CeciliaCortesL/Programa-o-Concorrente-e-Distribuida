@@ -21,7 +21,7 @@ public class Funcionario extends Thread{
         contaSalario.depositar(1400);
         int valorInvestimento = (int) (salarioFuncionario * 0.2);
         contaInvestimento.depositar(valorInvestimento);
-        System.out.println("Funcionário: " + nomeFuncionario + " Salário recebido: R$ " + salarioFuncionario + "Investimento: R$ " + valorInvestimento);
+        System.out.println("Funcionário: " + nomeFuncionario + " - Salário recebido: R$ " + salarioFuncionario + " - Investimento: R$ " + valorInvestimento);
     }
 
     public String getNome() {

@@ -10,7 +10,7 @@ public class Banco {
             if (origem.getSaldo() >= valorDaCompra) {
                 origem.sacar(valorDaCompra);
                 destino.depositar(valorDaCompra);
-                System.out.println("Valor transferência: R$ " + valorDaCompra + " Conta origem: " + origem.getNomeConta() + " Conta destino: " + destino.getNomeConta());
+                System.out.println("Conta Origem: " + origem.getNomeConta() + " - Conta destino: " + destino.getNomeConta() +  " - Valor transferência: R$ " + valorDaCompra);
             }
             else{
                 System.out.println("Saldo insuficiente. Conta: " + origem.getNomeConta());
@@ -20,10 +20,11 @@ public class Banco {
         }
     }
 
-    public void exibirSaldosFinais(Conta[] contas){
+    public void exibirSaldosFinais(Conta[] contas) {
+        System.out.println("----------------------------------------------------------------------");
         System.out.println("Saldo das contas: ");
         for (Conta conta : contas) {
-            System.out.println("Conta: " + conta.getNomeConta() + " Saldo R$: " + conta.getSaldo());
+            System.out.println("Conta: " + conta.getNomeConta() + " - Saldo R$: " + conta.getSaldo());
         }
     }
 }

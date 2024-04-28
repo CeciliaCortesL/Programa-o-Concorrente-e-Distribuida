@@ -19,12 +19,13 @@ public class Loja {
     }
 
     public void pagarFuncionarios() {
+        System.out.println("----------------------------------------------------------------------");
         System.out.println("Pagamento dos funcionários da loja: " + nomeLoja);
         synchronized(contaLoja){
             for (Funcionario funcionario : funcionarios) {
                 if (contaLoja.getSaldo() >= Funcionario.getSalario()) {
                     contaLoja.depositar(Funcionario.getSalario());
-                    System.out.println("Funcionário: " + funcionario.getNome() + " Loja: " + nomeLoja + " Salário recebido: R$ " + Funcionario.getSalario());
+                    System.out.println("Funcionário: " + funcionario.getNome() + " - Loja: " + nomeLoja + " - Salário recebido: R$ " + Funcionario.getSalario());
                 }
             }
         }
