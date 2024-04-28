@@ -1,24 +1,24 @@
 public class Funcionario extends Thread{
     private final String nomeFuncionario;
-    private final Conta contaSalario;
+    private final Conta contaCorrente;
     private final Conta contaInvestimento;
     private final static double salarioFuncionario = 1400;
 
-    public Funcionario(String nomeFuncionario, Conta contaSalario, Conta contaInvestimento) {
+    public Funcionario(String nomeFuncionario, Conta contaCorrente, Conta contaInvestimento) {
         this.nomeFuncionario = nomeFuncionario;
-        this.contaSalario = contaSalario;
+        this.contaCorrente = contaCorrente;
         this.contaInvestimento = contaInvestimento;
     }
 
     public Funcionario(Loja loja) {
         this.nomeFuncionario = "";
-        this.contaSalario = null;
+        this.contaCorrente = null;
         this.contaInvestimento = null;
     }
 
     @Override
     public void run() {
-        contaSalario.depositar(1400);
+        contaCorrente.depositar(1400);
         int valorInvestimento = (int) (salarioFuncionario * 0.2);
         contaInvestimento.depositar(valorInvestimento);
         System.out.println("Funcionário: " + nomeFuncionario + " - Salário recebido: R$ " + salarioFuncionario + " - Investimento: R$ " + valorInvestimento);
