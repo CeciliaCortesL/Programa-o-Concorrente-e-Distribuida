@@ -24,7 +24,7 @@ public class Cliente extends Thread {
             synchronized (loja) {
                 if (contaCliente.getSaldo()>= valorDaCompra) {
                     banco.transferir(contaCliente, loja.getContaLoja(), valorDaCompra);
-                    System.out.println("Cliente: " + nomeCliente + " - Loja: " + loja + " - Compra: R$ " + valorDaCompra);
+                    System.out.println("Cliente: " + nomeCliente + " - Loja: " + loja.getNomeLoja() + " - Compra: R$ " + valorDaCompra);
                 } else {
                     break;
                 }
